@@ -1,0 +1,33 @@
+# .gitignore
+
+curry/
+# Python
+venv/
+/venv/
+__pycache__/
+*.pyc
+
+# IDE / OS specific
+.vscode/
+.idea/
+.DS_Store
+
+# YOLOv5リポジトリ自体は含めない（依存関係として扱うため）
+# ただし、学習済みモデルは含めたいので、ここは注意深く設定
+/yolov5/*
+!/yolov5/runs/
+/yolov5/runs/*
+!/yolov5/runs/train/
+/yolov5/runs/train/*
+!/yolov5/runs/train/direct_test_run/
+/yolov5/runs/train/direct_test_run/*
+!/yolov5/runs/train/direct_test_run/weights/
+/yolov5/runs/train/direct_test_run/weights/*
+!/yolov5/runs/train/direct_test_run/weights/best.pt
+
+# データセットはリポジトリに含めない（サイズが大きいため）
+# 必要であれば、別途共有する
+datasets/
+test_images/
+estimete2.py
+train.py
