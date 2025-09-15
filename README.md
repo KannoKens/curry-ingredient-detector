@@ -11,6 +11,7 @@
 - コマンドラインから簡単に実行できます。
 
 ## フォルダ構成
+```
 curry-ingredient-detector/
 │
 ├── yolov5/                    # 学習済みモデルやYOLOv5のプログラム本体
@@ -24,8 +25,8 @@ curry-ingredient-detector/
 ├── estimate.py                # 推定実行スクリプト
 ├── train.py                   # 再学習用スクリプト
 ├── requirements.txt           # 必要なライブラリ
-└── README.md                  # このファイル
-
+└── README.md                  
+```
 
 ## セットアップ方法
 
