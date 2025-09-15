@@ -12,12 +12,19 @@
 
 ## フォルダ構成
 curry-ingredient-detector/
-├── yolov5/runs/train/direct_test_run/weights/best.pt (学習済みモデル)
-├── test_images/ (テスト用画像)
-├── estimate.py (推定実行スクリプト)
-├── train.py (再学習用スクリプト)
-├── requirements.txt (必要なライブラリ)
-└── README.md (このファイル)
+│
+├── yolov5/                    # 学習済みモデルやYOLOv5のプログラム本体
+│   └── runs/train/direct_test_run/weights/
+│       └── best.pt            # 学習済みモデル
+│
+├── datasets/                  # データセット（リポジトリには含まない）
+├── curry/                     # (データセットのサンプル)
+├── test_images/               # テスト用画像（リポジトリには含まない）
+│
+├── estimate.py                # 推定実行スクリプト
+├── train.py                   # 再学習用スクリプト
+├── requirements.txt           # 必要なライブラリ
+└── README.md                  # このファイル
 
 
 ## セットアップ方法
