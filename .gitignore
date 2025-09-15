@@ -1,6 +1,5 @@
 # .gitignore
 
-curry/
 # Python
 venv/
 /venv/
@@ -28,6 +27,7 @@ __pycache__/
 # データセットはリポジトリに含めない（サイズが大きいため）
 # 必要であれば、別途共有する
 datasets/
+curry/
 test_images/
 estimete2.py
 train.py
