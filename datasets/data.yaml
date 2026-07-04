@@ -1,0 +1,13 @@
+train: ../datasets/train/images
+val: ../datasets/valid/images
+test: ../datasets/test/images
+
+nc: 4
+names: ['carrot', 'meet', 'onion', 'potato']
+
+roboflow:
+  workspace: kkkkkkk-lufs5
+  project: curry-project-mnjnx
+  version: 5
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/kkkkkkk-lufs5/curry-project-mnjnx/dataset/5

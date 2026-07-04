@@ -11,22 +11,16 @@ __pycache__/
 .idea/
 .DS_Store
 
-# YOLOv5リポジトリ自体は含めない（依存関係として扱うため）
-# ただし、学習済みモデルは含めたいので、ここは注意深く設定
-/yolov5/*
-!/yolov5/runs/
-/yolov5/runs/*
-!/yolov5/runs/train/
-/yolov5/runs/train/*
-!/yolov5/runs/train/a-better-model/
-/yolov5/runs/train/a-better-model/*
-!/yolov5/runs/train/a-better-model/weights/
-/yolov5/runs/train/a-better-model/weights/*
-!/yolov5/runs/train/a-better-model/weights/best.pt
+# YOLOv5本体はリポジトリに含めない（利用者が別途cloneする。README参照）
+/yolov5/
 
-# データセットはリポジトリに含めない（サイズが大きいため）
+# データセットはリポジトリに含めない（サイズが大きいため。クラス定義のみ同梱する）
 # 必要であれば、別途共有する
-datasets/
+datasets/*
+!datasets/data.yaml
 curry/
 test_images/
 estimete2.py
+
+# WSL/Windows由来のメタファイル
+*:Zone.Identifier

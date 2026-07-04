@@ -11,20 +11,22 @@
 ## モデルについて
 
 - ベースモデル: YOLOv5s
-- 200エポック学習（`yolov5/runs/train/a-better-model/`）
+- 200エポック学習
 - 検証データでの精度: mAP@0.5 ≈ 0.84、mAP@0.5:0.95 ≈ 0.69
 
 ## フォルダ構成
 ```
 curry-ingredient-detector/
 │
-├── yolov5/                    # YOLOv5本体（別途clone、下記セットアップ参照）
-│   └── runs/train/a-better-model/weights/
-│       └── best.pt            # 学習済みモデル（本リポジトリに含む）
+├── yolov5/                    # YOLOv5本体（リポジトリには含まない。下記セットアップでclone）
+├── models/
+│   └── best.pt                # 学習済みモデル（本リポジトリに含む）
 │
-├── datasets/                  # データセット（リポジトリには含まない）
+├── datasets/
+│   └── data.yaml               # クラス定義（データ本体はリポジトリに含まない）
 ├── curry/                     # (データセットのサンプル、リポジトリには含まない)
 ├── test_images/               # テスト用画像（リポジトリには含まない）
+├── examples/                  # 実行例用のサンプル画像・検出結果画像
 │
 ├── estimate.py                # 推定実行スクリプト
 ├── train.py                   # 再学習用スクリプト
@@ -43,8 +45,8 @@ cd curry-ingredient-detector
 2.  **YOLOv5公式リポジトリをクローンします:**
 ```bash
 git clone https://github.com/ultralytics/yolov5.git
+git -C yolov5 checkout 2540fd4c1c2d9186126a71b3eb681d3a0a11861e  # 動作確認済みコミット
 ```
-（学習済みモデル本体 `yolov5/runs/train/a-better-model/weights/best.pt` は本リポジトリに含まれているので、上書きされないよう注意してください。）
 
 3.  **仮想環境を作成し、ライブラリをインストールします:**
 ```bash
@@ -62,12 +64,23 @@ pip install -r requirements.txt
 python estimate.py [画像ファイルのパス]
 ```
 
+実行例:
+```bash
+$ python estimate.py examples/sample.jpg
+potato
+```
+
+検証データに対する検出例:
+
+![検出例](examples/detection_example.jpg)
+
 ## モデルの再学習について
 
 データセットを更新し、モデルを再学習させたい場合は `train.py` を使用します。
+データセットのパスは `train.py` 冒頭の `DATA_YAML_PATH`（`datasets/data.yaml`）で固定しているため、その構成でデータを配置してください。
 
 ```bash
 # 基本的な再学習コマンド
 # 結果は yolov5/runs/train/new_ingredient_model/ に保存されます
-python train.py --img 640 --batch 8 --epochs 100 --data ../datasets/data.yaml --weights yolov5s.pt --name new_ingredient_model
+python train.py --img-size 640 --batch-size 8 --epochs 100 --weights yolov5s.pt --name new_ingredient_model
 ```

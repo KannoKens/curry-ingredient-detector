@@ -7,9 +7,8 @@ from pathlib import Path
 # ----------------------------------------------------
 # 設定項目 (実行前にここを確認・変更)
 # ----------------------------------------------------
-# 学習済みモデルが保存されている「実行名」フォルダ
-#    (例: 'direct_test_run', 'my_final_model' など)
-RUN_NAME = 'a-better-model'
+# 学習済みモデルファイルのパス
+MODEL_PATH = Path('models/best.pt')
 
 # 検出の信頼度のデフォルトしきい値 (0.0 ~ 1.0)
 DEFAULT_CONFIDENCE = 0.4
@@ -30,16 +29,15 @@ def estimate_ingredients(image_path, model, confidence_threshold):
         print(f"エラー: 画像の解析中に問題が発生しました。ファイルが破損している可能性があります。 ({e})", file=sys.stderr)
         return None
 
-def load_model(run_name):
+def load_model(model_path):
     """
-    指定された実行名の学習済みモデルを読み込む関数。
+    指定されたパスの学習済みモデルを読み込む関数。
     """
     yolov5_dir = Path('yolov5')
     if not yolov5_dir.is_dir():
         print("エラー: 'yolov5' フォルダが見つかりません。", file=sys.stderr)
         return None
 
-    model_path = yolov5_dir / 'runs/train' / run_name / 'weights/best.pt'
     if not model_path.is_file():
         print(f"エラー: モデルファイルが見つかりません。パスを確認してください: {model_path}", file=sys.stderr)
         return None
@@ -72,7 +70,7 @@ def main():
         sys.exit(1) # エラーでプログラムを終了
 
     # モデルを読み込む
-    model = load_model(RUN_NAME)
+    model = load_model(MODEL_PATH)
     if model is None:
         sys.exit(1) # モデル読み込み失敗で終了
 
