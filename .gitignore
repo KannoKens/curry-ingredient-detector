@@ -18,11 +18,11 @@ __pycache__/
 /yolov5/runs/*
 !/yolov5/runs/train/
 /yolov5/runs/train/*
-!/yolov5/runs/train/direct_test_run/
-/yolov5/runs/train/direct_test_run/*
-!/yolov5/runs/train/direct_test_run/weights/
-/yolov5/runs/train/direct_test_run/weights/*
-!/yolov5/runs/train/direct_test_run/weights/best.pt
+!/yolov5/runs/train/a-better-model/
+/yolov5/runs/train/a-better-model/*
+!/yolov5/runs/train/a-better-model/weights/
+/yolov5/runs/train/a-better-model/weights/*
+!/yolov5/runs/train/a-better-model/weights/best.pt
 
 # データセットはリポジトリに含めない（サイズが大きいため）
 # 必要であれば、別途共有する
@@ -30,4 +30,3 @@ datasets/
 curry/
 test_images/
 estimete2.py
-train.py

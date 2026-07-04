@@ -9,7 +9,7 @@ from pathlib import Path
 # ----------------------------------------------------
 # 学習済みモデルが保存されている「実行名」フォルダ
 #    (例: 'direct_test_run', 'my_final_model' など)
-RUN_NAME = 'direct_test_run'
+RUN_NAME = 'a-better-model'
 
 # 検出の信頼度のデフォルトしきい値 (0.0 ~ 1.0)
 DEFAULT_CONFIDENCE = 0.4
